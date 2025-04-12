@@ -51,14 +51,21 @@ const schemaInfo = {
   _id: "57231f1b30e4351f4e9f4bf6",
 };
 
-class User{
-  constructor({_id, first_name, last_name, location, description, occupation}){
-      this._id = _id;
-      this.first_name = first_name;
-      this.last_name = last_name;
-      this.location = location;
-      this.description = description;
-      this.occupation = occupation;
+class User {
+  constructor({
+    _id,
+    first_name,
+    last_name,
+    location,
+    description,
+    occupation,
+  }) {
+    this._id = _id;
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.location = location;
+    this.description = description;
+    this.occupation = occupation;
   }
 }
 
@@ -116,83 +123,92 @@ const jo = new User({
   occupation: "Professor",
 });
 
-const users = [im, er, pt, rk, al, jo];
+export const users = [im, er, pt, rk, al, jo];
 
-// Create initial photos.
-const photo1 = {
+export class Photo {
+  constructor({ _id, date_time, file_name, user_id }) {
+    this._id = _id;
+    this.date_time = date_time;
+    this.file_name = file_name;
+    this.user_id = user_id;
+    this.comments = [];
+  }
+}
+
+const photo1 = new Photo({
   _id: "57231f1a30e4351f4e9f4bdd",
   date_time: "2012-08-30 10:44:23",
-  file_name: "ouster.jpg",
+  file_name: "images/ouster.jpg",
   user_id: jo._id,
-};
-const photo2 = {
+});
+const photo2 = new Photo({
   _id: "57231f1a30e4351f4e9f4bde",
   date_time: "2009-09-13 20:00:00",
   file_name: "malcolm2.jpg",
   user_id: im._id,
-};
-const photo3 = {
+});
+const photo3 = new Photo({
   _id: "57231f1a30e4351f4e9f4bdf",
   date_time: "2009-09-13 20:05:03",
   file_name: "malcolm1.jpg",
   user_id: im._id,
-};
-const photo4 = {
+});
+const photo4 = new Photo({
   _id: "57231f1a30e4351f4e9f4be0",
   date_time: "2013-11-18 18:02:00",
   file_name: "ripley1.jpg",
   user_id: er._id,
-};
-const photo5 = {
+});
+const photo5 = new Photo({
   _id: "57231f1a30e4351f4e9f4be1",
   date_time: "2013-09-20 17:30:00",
   file_name: "ripley2.jpg",
   user_id: er._id,
-};
-const photo6 = {
+});
+const photo6 = new Photo({
   _id: "57231f1a30e4351f4e9f4be2",
   date_time: "2009-07-10 16:02:49",
   file_name: "kenobi1.jpg",
   user_id: rk._id,
-};
-const photo7 = {
+});
+const photo7 = new Photo({
   _id: "57231f1a30e4351f4e9f4be3",
   date_time: "2010-03-18 23:48:00",
   file_name: "kenobi2.jpg",
   user_id: rk._id,
-};
-const photo8 = {
+});
+const photo8 = new Photo({
   _id: "57231f1a30e4351f4e9f4be4",
   date_time: "2010-08-30 14:26:00",
   file_name: "kenobi3.jpg",
   user_id: rk._id,
-};
-const photo9 = {
+});
+const photo9 = new Photo({
   _id: "57231f1a30e4351f4e9f4be5",
   date_time: "2013-12-03 09:02:00",
   file_name: "took1.jpg",
   user_id: pt._id,
-};
-const photo10 = {
+});
+const photo10 = new Photo({
   _id: "57231f1a30e4351f4e9f4be6",
   date_time: "2013-12-03 09:03:00",
   file_name: "took2.jpg",
   user_id: pt._id,
-};
-const photo11 = {
+});
+const photo11 = new Photo({
   _id: "57231f1a30e4351f4e9f4be7",
   date_time: "2013-09-04 09:16:32",
   file_name: "ludgate1.jpg",
   user_id: al._id,
-};
-const photo12 = {
+});
+const photo12 = new Photo({
   _id: "57231f1a30e4351f4e9f4be8",
   date_time: "2008-10-16 17:12:28",
   file_name: "kenobi4.jpg",
   user_id: rk._id,
-};
+});
 
-const photos = [
+export const photos = [
   photo1,
   photo2,
   photo3,
@@ -207,8 +223,16 @@ const photos = [
   photo12,
 ];
 
-// Create initial comments.
-const comment1 = {
+export class Comment {
+  constructor({ date_time, comment, user, photo_id }) {
+    this.date_time = date_time;
+    this.comment = comment;
+    this.user = user;
+    this.photo_id = photo_id;
+  }
+}
+
+const comment1 = new Comment({
   _id: "57231f1a30e4351f4e9f4be9",
   date_time: "2012-09-02 14:01:00",
   comment:
@@ -216,9 +240,9 @@ const comment1 = {
     "it's so easy to forget a </div>!",
   user: jo,
   photo_id: photo1._id,
-};
+});
 
-const comment2 = {
+const comment2 = new Comment({
   _id: "57231f1a30e4351f4e9f4bea",
   date_time: "2013-09-06 14:02:00",
   comment:
@@ -227,9 +251,9 @@ const comment2 = {
     "from line to line?",
   user: jo,
   photo_id: photo1._id,
-};
+});
 
-const comment3 = {
+const comment3 = new Comment({
   _id: "57231f1a30e4351f4e9f4beb",
   date_time: "2013-09-08 14:06:00",
   comment:
@@ -237,9 +261,9 @@ const comment3 = {
     "then HTML escaping isn't working properly.",
   user: jo,
   photo_id: photo1._id,
-};
+});
 
-const comment4 = {
+const comment4 = new Comment({
   _id: "57231f1a30e4351f4e9f4bec",
   date_time: "2009-09-14 18:07:00",
   comment:
@@ -250,18 +274,18 @@ const comment4 = {
     "there it is. Life finds a way.",
   user: im,
   photo_id: photo2._id,
-};
+});
 
-const comment5 = {
+const comment5 = new Comment({
   _id: "57231f1a30e4351f4e9f4bed",
   date_time: "2013-11-28 17:45:13",
   comment:
     "Back from my trip. Did IQs just... drop sharply while I was " + "away?",
   user: er,
   photo_id: photo5._id,
-};
+});
 
-const comment6 = {
+const comment6 = new Comment({
   _id: "57231f1a30e4351f4e9f4bee",
   date_time: "2013-11-02 14:07:00",
   comment:
@@ -269,9 +293,9 @@ const comment6 = {
     "you do with the scavenged tech, got any tips?",
   user: er,
   photo_id: photo7._id,
-};
+});
 
-const comment7 = {
+const comment7 = new Comment({
   _id: "57231f1a30e4351f4e9f4bef",
   date_time: "2013-11-02 14:09:15",
   comment:
@@ -279,18 +303,17 @@ const comment7 = {
     "the moment, but let's meet up when I get back! :)",
   user: rk,
   photo_id: photo7._id,
-};
+});
 
-const comment8 = {
+const comment8 = new Comment({
   _id: "57231f1a30e4351f4e9f4bf0",
   date_time: "2010-09-06 13:59:33",
-  comment:
-    "Made a new friend today! Well, they followed me " + "home, anyway.",
+  comment: "Made a new friend today! Well, they followed me " + "home, anyway.",
   user: rk,
   photo_id: photo8._id,
-};
+});
 
-const comment9 = {
+const comment9 = new Comment({
   _id: "57231f1a30e4351f4e9f4bf1",
   date_time: "2008-10-16 18:04:55",
   comment:
@@ -299,17 +322,17 @@ const comment9 = {
     "speeds that'll rival any First Order piece of junk.",
   user: rk,
   photo_id: photo12._id,
-};
+});
 
-const comment10 = {
+const comment10 = new Comment({
   _id: "57231f1a30e4351f4e9f4bf2",
   date_time: "2013-12-04 13:12:00",
   comment: "What do you mean you haven't heard of second " + "breakfast?",
   user: pt,
   photo_id: photo10._id,
-};
+});
 
-const comment11 = {
+const comment11 = new Comment({
   _id: "57231f1a30e4351f4e9f4bf3",
   date_time: "2013-09-04 10:14:32",
   comment:
@@ -317,25 +340,25 @@ const comment11 = {
     "occasionally chooses to cooperate. ",
   user: al,
   photo_id: photo11._id,
-};
+});
 
-const comment12 = {
+const comment12 = new Comment({
   _id: "57231f1a30e4351f4e9f4bf4",
   date_time: "2016-01-04 2:00:01",
   comment: "Which one are you?",
   user: al,
   photo_id: photo9._id,
-};
+});
 
-const comment13 = {
+const comment13 = new Comment({
   _id: "57231f1a30e4351f4e9f4bf5",
   date_time: "2016-01-04 2:04:01",
   comment: "The tall one.",
   user: pt,
   photo_id: photo9._id,
-};
+});
 
-const comments = [
+export const comments = [
   comment1,
   comment2,
   comment3,
@@ -386,6 +409,7 @@ const schemaModel = function () {
 };
 
 const models = {
+  users,
   userListModel: userListModel,
   userModel: userModel,
   photoOfUserModel: photoOfUserModel,
